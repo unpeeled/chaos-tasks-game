@@ -1,6 +1,9 @@
 # Chaos Tasks
 A simple party game that assigns every guest a random and secret task he or she has to fulfill. Inspired by [Chaoskarten](https://www.chaoskarten.de/).
-![Start Screen](doc/img/start.png) ![Task Screen](doc/img/task.png)
+| Start | Task received |
+|-------|---------------|
+|![Start Screen](doc/img/start.png) | ![Task Screen](doc/img/task.png) |
+
 ## Information
 - No JavaScript
 - Everyone should use his/her own phone. Application uses cookies to show own task.
@@ -20,11 +23,11 @@ A simple party game that assigns every guest a random and secret task he or she 
     Example tasks (in german) are stored in `example_tasks_german.txt`.
     One line per task.
 4. Compile the program and start it:
-```bash
-cd src/chaostasks/
-go build
-./chaostasks
-```
+    ```bash
+    cd src/chaostasks/
+    go build
+    ./chaostasks
+    ```
 5. Browse to `http://127.0.0.1:3000`
 
 ## Things planned
