@@ -1,5 +1,7 @@
 # Chaos Tasks
 A simple party game that assigns every guest a random and secret task he or she has to fulfill. Inspired by [Chaoskarten](https://www.chaoskarten.de/).
+
+[![Go Build](https://github.com/unpeeled/chaos-tasks-game/actions/workflows/go.yml/badge.svg)](https://github.com/unpeeled/chaos-tasks-game/actions/workflows/go.yml)
 | Start | Task received |
 |-------|---------------|
 |![Start Screen](doc/img/start.png) | ![Task Screen](doc/img/task.png) |
