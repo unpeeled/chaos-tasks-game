@@ -16,11 +16,17 @@ A simple party game that assigns every guest a random and secret task he or she 
 - bash
 
 ## Setup
-1. Edit `etc/chaostasks-env.sh` with the details of your postgres database you want to create/use.
+There are two possible ways descri
+### Manual
+1. Edit `etc/chaostasks-env.sh` with the details of your postgres database you want to create/use
+   and source it:
+    ```bash
+    source etc/chaostasks-env.sh`
+    ``
 2. Create the database with its content. Execute `scripts/1-create-db.sh`.
 3. Import tasks from a text file:
     ```bash
-    scripts/2-impot-tasks.sh <Path to file with tasks>
+   cat <Path to file with tasks> | scripts/2-impot-tasks.sh
     ```
     Example tasks (in german) are stored in `example_tasks_german.txt`.
     One line per task shall be used.
@@ -31,6 +37,13 @@ A simple party game that assigns every guest a random and secret task he or she 
     ./chaostasks
     ```
 5. Browse to `http://127.0.0.1:3000`
+
+### Docker Compose
+TODO
+
+    ```bash
+    cat scripts/example_tasks_german.txt | docker exec -i chaos-tasks-game_app_run_<YOUR ID> /bin/sh /opt/chaostasks/bin/2-import-tasks.sh
+    ```
 
 ## Things planned
 - Systemd-Unit-File
