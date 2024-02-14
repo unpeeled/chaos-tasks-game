@@ -21,8 +21,8 @@ There are two possible ways descri
 1. Edit `etc/chaostasks-env.sh` with the details of your postgres database you want to create/use
    and source it:
     ```bash
-    source etc/chaostasks-env.sh`
-    ``
+    source etc/chaostasks-env.sh
+    ```
 2. Create the database with its content. Execute `scripts/1-create-db.sh`.
 3. Import tasks from a text file:
     ```bash
@@ -40,10 +40,9 @@ There are two possible ways descri
 
 ### Docker Compose
 TODO
-
-    ```bash
-    cat scripts/example_tasks_german.txt | docker exec -i chaos-tasks-game_app_run_<YOUR ID> /bin/sh /opt/chaostasks/bin/2-import-tasks.sh
-    ```
+```bash
+cat scripts/example_tasks_german.txt | docker exec -i chaos-tasks-game_app_run_<YOUR ID> /bin/sh /opt/chaostasks/bin/2-import-tasks.sh
+```
 
 ## Things planned
 - Systemd-Unit-File
