@@ -117,7 +117,7 @@ func main() {
 
 	mux := http.NewServeMux()
 	var err error
-	connStr := fmt.Sprintf("host=%s user=%s dbname=%s password=%s",
+	connStr := fmt.Sprintf("host=%s user=%s dbname=%s password=%s sslmode=disable",
 		db_conf.conf.db_host,
 		db_conf.conf.db_user,
 		db_conf.conf.db_name,

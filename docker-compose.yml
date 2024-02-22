@@ -1,0 +1,33 @@
+services:
+  db:
+    image: postgres:13-alpine
+    container_name: chaostasks_db
+    restart: always
+    environment:
+      POSTGRES_USER: chaostasks
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+      POSTGRES_DB: chaostasks
+    volumes:
+      - ./scripts/create-pg-db.sql:/docker-entrypoint-initdb.d/init.sql
+    secrets:
+      - db_password
+
+  app:
+    build:
+      context: ./
+    container_name: choastasks_app
+    restart: unless-stopped
+    environment:
+      DB_USER: chaostasks
+      DB_HOST: chaostasks_db
+      DB_NAME: chaostasks
+      DB_PASSWORD_FILE: /var/run/secrets/db_password
+    depends_on:
+      - db
+    secrets:
+      - db_password
+    ports:
+      - 3000:3000
+secrets:
+  db_password:
+    file: ./.db_passwd.txt

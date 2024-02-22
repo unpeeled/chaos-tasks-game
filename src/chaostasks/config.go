@@ -1,6 +1,8 @@
 package main
 
 import (
+	"bufio"
+	"fmt"
 	"os"
 )
 
@@ -30,7 +32,22 @@ func getDBconfig() DBConfAll {
 	db_conf.conf.db_host = getEnv("DB_HOST", "127.0.0.1")
 	db_conf.conf.db_user = getEnv("DB_USER", "chaostasks")
 	db_conf.conf.db_name = getEnv("DB_NAME", "chaostasks")
-	db_conf.db_password = os.Getenv("DB_PASSWORD")
+
+	// Password
+	val, ok := os.LookupEnv("DB_PASSWORD_FILE")
+	if !ok {
+		db_conf.db_password = os.Getenv("DB_PASSWORD")
+	} else {
+		file, err := os.Open(val)
+		if err != nil {
+			fmt.Println(err)
+		}
+		defer file.Close()
+
+		scanner := bufio.NewScanner(file)
+		scanner.Scan()
+		db_conf.db_password = scanner.Text()
+	}
 
 	return db_conf
 }
