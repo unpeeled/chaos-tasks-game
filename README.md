@@ -11,9 +11,17 @@ A simple party game that assigns every guest a random and secret task he or she 
 - No JavaScript
 
 ### Software Requirements
+
+For manual install:
+
 - postgresql (13.13 is tested)
 - go (1.15 is tested)
 - bash
+
+For docker-compose install:
+
+- docker
+- docker-compose
 
 ## Setup
 There are two possible ways descri
@@ -39,16 +47,25 @@ There are two possible ways descri
 5. Browse to `http://127.0.0.1:3000`
 
 ### Docker Compose
-TODO
+Docker-compose can be used to start the app easy:
 ```bash
-cat scripts/example_tasks_german.txt | docker exec -i chaos-tasks-game_app_run_<YOUR ID> /bin/sh /opt/chaostasks/bin/2-import-tasks.sh
+docker-compose up -d
 ```
 
+Afterwards the app is running but has no tasks included. To add tasks execute the following command: 
+```bash
+cat <Path to file with tasks> | docker exec -i $(docker ps -aqf "ancestor=chaos-tasks-game_app") /bin/sh /opt/chaostasks/bin/2-import-tasks.sh
+```
+
+Then your app is ready. To get the IP-Address and test if app is reachable:
+```bash
+IP_ADDRESS=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aqf "ancestor=chaos-tasks-game_app"))
+curl "http://${IP_ADDRESS}:3000"
+```
 ## Things planned
 - Systemd-Unit-File
 - Ngninx HTTPS integration
 - German version
-- docker build
 - user management
 - site customisation
 - task management in web frontend.
