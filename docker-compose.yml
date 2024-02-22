@@ -16,7 +16,7 @@ services:
     build:
       context: ./
     container_name: choastasks_app
-    restart: on-failure[2]
+    restart: unless-stopped
     environment:
       DB_USER: chaostasks
       DB_HOST: chaostasks_db
