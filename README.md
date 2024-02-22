@@ -25,30 +25,35 @@ For docker-compose install:
 - docker-compose
 
 ## Setup
-There are two possible ways descri
+There are two possible ways described to install chaos-tasks:
+
 ### Manual
-1. Edit `etc/chaostasks-env.sh` with the details of your postgres database you want to create/use
-   and source it:
+1. Edit `etc/chaostasks-env.sh` with the details of your postgres database. Either you change the password there or create a password file in `.db_passwd.txt`.
+2. Then source the env file:
     ```bash
     source etc/chaostasks-env.sh
     ```
-2. Create the database with its content. Execute `scripts/1-create-db.sh`.
-3. Import tasks from a text file:
+3. Create the database with its content. Execute `scripts/1-create-db.sh`.
+4. Import tasks from a text file:
     ```bash
    cat <Path to file with tasks> | scripts/2-impot-tasks.sh
     ```
     Example tasks (in german) are stored in `example_tasks_german.txt`.
     One line per task shall be used.
-4. Compile the program and start it:
+5. Compile the program and start it:
     ```bash
     cd src/chaostasks/
     go build
     ./chaostasks
     ```
-5. Browse to `http://127.0.0.1:3000`
+6. Browse to `http://127.0.0.1:3000`
 
 ### Docker Compose
-Docker-compose can be used to start the app easy:
+Docker-compose can be used to start the app easy.
+
+First a password file for database has to be created in topdir of repo: `.db_passwd.txt`
+
+Afterwards starting the app can be done with:
 ```bash
 docker-compose up -d
 ```
