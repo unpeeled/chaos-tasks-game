@@ -86,7 +86,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />"))
 			w.Write([]byte("<h1>Chaos Tasks</h1>\n"))
 			w.Write([]byte(fmt.Sprintf("<p><u>Name</u>: %s</p>", name)))
-			w.Write([]byte(fmt.Sprintf("<p><u>Task</u>: %s</p>", task)))
+			w.Write([]byte(fmt.Sprintf("<p><u>%s</u>: %s</p>", lang_trans(r, "task"), task)))
 			w.Write([]byte("</html>\n"))
 			return
 		}

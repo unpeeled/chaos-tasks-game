@@ -12,11 +12,14 @@ var texts = map[string]Texts{
 	"German":Texts{
 		"y_name": "Dein Name:",
 		"button": "Los gehts!",
-		"descr": "Herzlich Willkommen auf der Party. Hol dir die Aufgabe, die das Universum für dich bereit hält.",	},
+		"descr": "Herzlich Willkommen auf der Party. Hol dir die Aufgabe, die das Universum für dich bereit hält.",
+		"task": "Aufgabe",
+	},
 	"English":Texts{
 		"y_name": "Your Name:",
 		"button":"Let's go!",
 		"descr": "Welcome to the party. Take the task that you have to fulfill tonight.",
+		"task": "Task",
 	},
 }
 
