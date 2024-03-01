@@ -9,17 +9,17 @@ import (
 type Texts map[string]string
 
 var texts = map[string]Texts{
-	"German":Texts{
+	"German": {
 		"y_name": "Dein Name:",
 		"button": "Los gehts!",
-		"descr": "Herzlich Willkommen auf der Party. Hol dir die Aufgabe, die das Universum für dich bereit hält.",
-		"task": "Aufgabe",
+		"descr":  "Herzlich Willkommen auf der Party. Hol dir die Aufgabe, die das Universum für dich bereit hält.",
+		"task":   "Aufgabe",
 	},
-	"English":Texts{
+	"English": {
 		"y_name": "Your Name:",
-		"button":"Let's go!",
-		"descr": "Welcome to the party. Take the task that you have to fulfill tonight.",
-		"task": "Task",
+		"button": "Let's go!",
+		"descr":  "Welcome to the party. Take the task that you have to fulfill tonight.",
+		"task":   "Task",
 	},
 }
 
@@ -34,4 +34,3 @@ func lang_trans(r *http.Request, entry string) string {
 
 	return texts[display.English.Tags().Name(tag)][entry]
 }
-
