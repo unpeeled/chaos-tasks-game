@@ -86,7 +86,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />"))
 			w.Write([]byte("<h1>Chaos Tasks</h1>\n"))
 			w.Write([]byte(fmt.Sprintf("<p><u>Name</u>: %s</p>", name)))
-			w.Write([]byte(fmt.Sprintf("<p><u>Task</u>: %s</p>", task)))
+			w.Write([]byte(fmt.Sprintf("<p><u>%s</u>: %s</p>", lang_trans(r, "task"), task)))
 			w.Write([]byte("</html>\n"))
 			return
 		}
@@ -94,12 +94,11 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("<!DOCTYPE html>\n"))
 	w.Write([]byte("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />"))
 	w.Write([]byte("<h1>Chaos Tasks</h1>\n"))
-	w.Write([]byte("<p>Welcome to the party. Take the task that you have to fulfill tonight by entering your name:</p>"))
-
+	w.Write([]byte(fmt.Sprintf("<p>%s</p>\n", lang_trans(r, "descr"))))
 	w.Write([]byte("<form action=\"/post\" method=\"post\">\n"))
-	w.Write([]byte("<label for=\"name\">Your Name:</label><br>\n"))
+	w.Write([]byte(fmt.Sprintf("<label for=\"name\">%s</label><br>\n", lang_trans(r, "y_name"))))
 	w.Write([]byte("<input type=\"text\" id=\"name\" name=\"name\">\n"))
-	w.Write([]byte("<input type=\"submit\" value=\"Let's go!\"/>\n"))
+	w.Write([]byte(fmt.Sprintf("<input type=\"submit\" value=\"%s\"/>\n", lang_trans(r, "button"))))
 	w.Write([]byte("</form>\n"))
 	w.Write([]byte("</html>\n"))
 }

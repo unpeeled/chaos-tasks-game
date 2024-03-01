@@ -3,9 +3,15 @@
 pwd=$(pwd)
 source ${pwd}/../etc/chaostasks-env.sh
 
-if [ -z $DB_HOST ] | [ -z $DB_NAME ] | [ -z $DB_USER ] | [ -z $DB_PASSWORD ]; then
+if [ -z $DB_HOST ] | [ -z $DB_NAME ] | [ -z $DB_USER ]; then
     echo "! Setup script can only be used if DB_xx variables are set."
     exit 1
+fi
+
+if [ -n $DB_PASSWORD_FILE ];  then
+    export DB_PASSWORD=$(cat $DB_PASSWORD_FILE)
+elif [-z $DB_PASSWORD ]; then
+    echo "No Password is set"
 fi
 
 sudo -i -u postgres createuser $DB_USER

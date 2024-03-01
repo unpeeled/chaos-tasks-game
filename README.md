@@ -10,13 +10,14 @@ A simple party game that assigns every guest a random and secret task he or she 
 ## Information
 - Everyone should use his/her own phone. Once a task is received a cookie is created on users phone. No new task can be received until cookie is deleted.
 - No JavaScript
+- Language Support for English and German (is set default via Browser and can not be changed)
 
 ### Software Requirements
 
 For manual install:
 
 - postgresql (13.13 is tested)
-- go (1.15 is tested)
+- go (1.19 is tested)
 - bash
 
 For docker-compose install:
@@ -28,7 +29,7 @@ For docker-compose install:
 There are two possible ways described to install chaos-tasks:
 
 ### Manual
-1. Edit `etc/chaostasks-env.sh` with the details of your postgres database. Either you change the password there or create a password file in `.db_passwd.txt`.
+1. Edit `etc/chaostasks-env.sh` with the details of your postgres database. Either the entrie `DB_PASSWORD` or `DB_PASSWORD_FILE` has to be set. If The file is used, it shall only contain the password.
 2. Then source the env file:
     ```bash
     source etc/chaostasks-env.sh
@@ -71,10 +72,9 @@ curl "http://${IP_ADDRESS}:3000"
 ## Things planned
 - Systemd-Unit-File
 - Ngninx HTTPS integration
-- German version
 - user management
 - site customisation
 - task management in web frontend.
 - tests
-- github actions (for build and tests)
+- github action for tests
 - demo page
