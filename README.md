@@ -56,19 +56,19 @@ First a password file for database has to be created in topdir of repo: `.db_pas
 
 Afterwards starting the app can be done with:
 ```bash
-docker-compose up -d
+docker-compose start app
 ```
 
 Afterwards the app is running but has no tasks included. To add tasks execute the following command: 
 ```bash
-cat <Path to file with tasks> | docker exec -i $(docker ps -aqf "ancestor=chaos-tasks-game_app") /bin/sh /opt/chaostasks/bin/2-import-tasks.sh
+cat <Path to file with tasks> | docker exec -i $(docker ps -qf "ancestor=chaostasks_app") /bin/sh /opt/chaostasks/bin/2-import-tasks.sh
 ```
 
-Then your app is ready. To get the IP-Address and test if app is reachable:
+Then your app is ready. The application can be reached by:
 ```bash
-IP_ADDRESS=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aqf "ancestor=chaos-tasks-game_app"))
-curl "http://${IP_ADDRESS}:3000"
+curl "http.//127.0.0.1:3000"
 ```
+
 ## Things planned
 - Systemd-Unit-File
 - Ngninx HTTPS integration
