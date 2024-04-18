@@ -12,6 +12,11 @@ import (
 var db *sql.DB
 
 func postHandler(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/post" {
+			http.NotFound(w, r)
+			return
+	}
+
 	var err error
 	//w.Header().Set("Set-Cookie", "session_id=test")
 	r.ParseForm()
@@ -65,6 +70,10 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 
+	if r.URL.Path != "/" {
+			http.NotFound(w, r)
+			return
+	}
 	read_cookie, cookie_err := r.Cookie("session_id")
 
 	if cookie_err == nil {
